@@ -1,0 +1,24 @@
+{
+    "short_name": "勉強してま～す",
+    "name": "勉強時間記録ツール：勉強してま～す君",
+    "icons": [
+        {
+            "src": "icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "any"
+        },
+        {
+            "src": "icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "theme_color": "#fdf6e3",
+    "background_color": "#fdf6e3",
+    "description": "5教科の勉強時間を楽しく記録・集計するツールです。",
+    "orientation": "portrait"
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勉強してます～君</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a5568">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>📚 勉強してます～君</h1>
+        <p>日々の学習時間を記録・集計しよう</p>
+    </header>
+
+    <main class="container">
+        <!-- 記録エリア -->
+        <section class="recording-section">
+            <h2>記録する教科を選んでください</h2>
+            <div class="subject-buttons">
+                <button class="subject-btn" data-subject="数学">
+                    <span class="icon">➗</span>
+                    <span class="name">数学</span>
+                    <span class="status">待機中</span>
+                </button>
+                <button class="subject-btn" data-subject="英語">
+                    <span class="icon">🔤</span>
+                    <span class="name">英語</span>
+                    <span class="status">待機中</span>
+                </button>
+                <button class="subject-btn" data-subject="理科">
+                    <span class="icon">🔬</span>
+                    <span class="name">理科</span>
+                    <span class="status">待機中</span>
+                </button>
+                <button class="subject-btn" data-subject="国語">
+                    <span class="icon">📖</span>
+                    <span class="name">国語</span>
+                    <span class="status">待機中</span>
+                </button>
+                <button class="subject-btn" data-subject="社会">
+                    <span class="icon">🌍</span>
+                    <span class="name">社会</span>
+                    <span class="status">待機中</span>
+                </button>
+            </div>
+            <div id="active-timer" class="timer-display hidden">
+                <p><span id="current-subject">--</span> を勉強中...</p>
+                <p class="time" id="elapsed-time">00:00:00</p>
+            </div>
+        </section>
+
+        <!-- 集計・グラフエリア -->
+        <section class="stats-section">
+            <div class="tabs">
+                <button class="tab-btn active" data-range="day">日</button>
+                <button class="tab-btn" data-range="week">週</button>
+                <button class="tab-btn" data-range="month">月</button>
+                <button class="tab-btn" data-range="all">全期間</button>
+            </div>
+
+            <div class="summary-cards">
+                <div class="card">
+                    <h3>総勉強時間</h3>
+                    <p id="total-time">0時間 0分</p>
+                </div>
+                <div class="card">
+                    <h3>最多教科</h3>
+                    <p id="top-subject">なし</p>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        // Service Workerの登録
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
