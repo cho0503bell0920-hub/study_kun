@@ -9,7 +9,6 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4a5568">
     <link rel="apple-touch-icon" href="icon.svg">
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -20,7 +19,6 @@
     </header>
 
     <main class="container">
-        <!-- 記録エリア -->
         <section class="recording-section">
             <h2>記録する教科を選んでください</h2>
             <div class="subject-buttons">
@@ -56,7 +54,6 @@
             </div>
         </section>
 
-        <!-- 集計・グラフエリア -->
         <section class="stats-section">
             <div class="tabs">
                 <button class="tab-btn active" data-range="day">日</button>
@@ -84,6 +81,13 @@
                     <canvas id="pieChart"></canvas>
                 </div>
             </div>
+
+            <div style="margin-top: 30px; text-align: center; padding-bottom: 20px;">
+                <button id="clear-data-btn"
+                    style="background-color: #e53e3e; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 14px;">
+                    データをリセットする
+                </button>
+            </div>
         </section>
     </main>
 
@@ -94,7 +98,7 @@
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
                     .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        console.log('ServiceWorker registration successful');
                     }, err => {
                         console.log('ServiceWorker registration failed: ', err);
                     });
@@ -102,12 +106,4 @@
         }
     </script>
 </body>
-
-<div style="margin-top: 30px; text-align: center;">
-    <button id="clear-data-btn"
-        style="background-color: #e53e3e; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 14px;">
-        データをリセットする
-    </button>
-</div>
-
 </html>
